@@ -1,5 +1,5 @@
 # SPL Token (USDC) Signup & Recharge Handling
-
+   
 Concise document explaining how the signup (gate) and balance recharge flow works using the USDC SPL token. Unrelated details were removed so reviewers can understand behavior quickly.
 
 ## 1. Components
