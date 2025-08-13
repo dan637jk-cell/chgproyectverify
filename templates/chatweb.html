@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-lang-key="chat_title">AI Web Builder - {{ username }}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+        /* Estilos para el esqueleto de carga */
+        .skeleton-loader { display: flex; flex-direction: column; gap: 10px; padding: 20px; background-color: #f0f0f0; height: 100%; }
+        .skeleton-header { height: 60px; background-color: #ccc; border-radius: 8px; }
+        .skeleton-content { height: 200px; background-color: #ddd; border-radius: 8px; }
+        .skeleton-footer { height: 40px; background-color: #ccc; border-radius: 8px; }
+        .overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(0, 0, 0, 0.5); color: white; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; z-index: 10; }
+        #ai-loading-indicator { display: none; }
+        @keyframes wave { 0%,100% { height: 10px; } 25% { height: 30px; } 50% { height: 20px; } 75% { height: 40px; } }
+        .wave-bar { animation: wave 1.5s infinite ease-in-out; }
+        .wave-bar:nth-child(1){ animation-delay: 0.1s; }
+        .wave-bar:nth-child(2){ animation-delay: 0.3s; }
+        .wave-bar:nth-child(3){ animation-delay: 0.5s; }
+        .wave-bar:nth-child(4){ animation-delay: 0.2s; }
+        .wave-bar:nth-child(5){ animation-delay: 0.4s; }
+        body.call-mode-active #history-panel, body.call-mode-active #chat-panel { display: none !important; }
+    </style>
+</head>
+<body class="flex flex-col text-white bg-gray-900" style="height: 100vh; overflow-y: auto;">
+
+    <!-- Header -->
+    <header class="gradient-bg p-4 shadow-lg z-20" id="header">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-xl font-bold" data-lang-key="chat_title">AI Web Builder</h1>
+            <div class="hidden md:flex items-center gap-4" id="desktop-menu">
+                <button id="mode-toggle-btn" class="bg-black/30 hover:bg-black/40 px-4 py-2 font-medium flex items-center gap-2 transition rounded-full"><span data-lang-key="chat_mode_button">Modo Chat</span></button>
+                <button class="publish-btn bg-black/30 hover:bg-black/40 px-4 py-2 font-medium flex items-center gap-2 transition shadow-[0_0_10px_white] border-0 rounded-full"><span data-lang-key="publish_button">Publicar Página</span> <i class="fas fa-arrow-right text-sm"></i></button>
+                
+                <div class="relative">
+                    <select id="lang-switcher" class="bg-black/30 hover:bg-black/40 px-4 py-2 font-medium transition rounded-full appearance-none">
+                        <option value="en" data-lang-key="english">English</option>
+                        <option value="es" data-lang-key="spanish">Español</option>
+                        <option value="zh" data-lang-key="chinese">中文</option>
+                    </select>
+                </div>
+
+                <span class="text-white font-medium"><span data-lang-key="balance_label">Balance:</span> ${{ "%.2f"|format(balance|float) }} USD</span>
+                <span data-lang-key="chat_greeting">Hola</span>, {{ username }}
+                <form action="{{ url_for('logout') }}" method="post" class="inline">
+                    <button type="submit" class="bg-red-600 hover:bg-red-700 px-4 py-2 font-medium flex items-center gap-2 transition rounded-full">
+                        <span data-lang-key="logout_button">Salir</span> <i class="fas fa-sign-out-alt text-sm"></i>
+                    </button>
+                </form>
+            </div>
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-white focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+        <div class="hidden md:hidden mt-4" id="mobile-menu">
+            <button id="mode-toggle-btn-mobile" class="block w-full text-left text-white py-2 px-4"><span data-lang-key="chat_mode_button">Modo Chat</span></button>
+            <button class="publish-btn block w-full text-left text-white py-2 px-4"><span data-lang-key="publish_button">Publicar Página</span></button>
+            <a href="{{ url_for('chat_history') }}" class="block text-white py-2 px-4"><span data-lang-key="chat_history_link">Historial de Chats</span></a>
+            <div class="relative py-2 px-4">
+                <select id="lang-switcher-mobile" class="bg-black/30 hover:bg-black/40 px-4 py-2 font-medium transition rounded-full appearance-none w-full">
+                    <option value="en" data-lang-key="english">English</option>
+                    <option value="es" data-lang-key="spanish">Español</option>
+                    <option value="zh" data-lang-key="chinese">中文</option>
+                </select>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div id="main-content" class="flex-1 flex flex-col md:flex-row" style="overflow-y: auto;">
+        <!-- History Panel -->
+        <div id="history-panel" class="hidden md:block w-64 bg-gray-800 p-4">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-xl font-bold" data-lang-key="history_header">Historial</h2>
+                <button id="new-chat-btn" class="bg-green-600 hover:bg-green-700 text-white font-bold py-1 px-3 rounded flex items-center justify-center">
+                    <i class="fas fa-plus mr-1"></i>
+                    <span data-lang-key="new_chat">New Chat</span>
+                </button>
+            </div>
+            <div id="history-content" class="overflow-y-auto" style="height: calc(100% - 120px);">
+                <!-- Items will load here -->
+            </div>
+            <div class="mt-4">
+                <button id="delete-all-chats-btn" class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded flex items-center justify-center">
+                    <i class="fas fa-trash-alt mr-2"></i>
+                    <span data-lang-key="delete_all_chats">Borrar todos los chats</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="flex-1 flex flex-col md:flex-row">
+            {% if hashchat %}
+            <!-- Website Preview -->
+            <div id="preview-panel" class="flex-1 w-full md:w-2/3 bg-gray-900 relative order-1 md:order-2">
+                <div class="absolute top-2 right-2 z-10">
+                    <button id="show-preview-btn" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" data-lang-key="show_preview">Ver previsualización</button>
+                </div>
+                <iframe id="webFrame" class="w-full h-full border-0"></iframe>
+                <div id="call-footer" class="absolute bottom-0 w-full bg-gray-800 bg-opacity-75 p-4 hidden">
+                    <div class="container mx-auto h-full px-4 flex flex-col justify-center">
+                        <div class="flex flex-col items-center">
+                            <div id="wave-animation" class="flex items-center space-x-1 mb-2 h-12 hidden">
+                                <div class="wave-bar w-2 bg-green-400 rounded-full"></div>
+                                <div class="wave-bar w-2 bg-blue-400 rounded-full"></div>
+                                <div class="wave-bar w-2 bg-purple-400 rounded-full"></div>
+                                <div class="wave-bar w-2 bg-pink-400 rounded-full"></div>
+                                <div class="wave-bar w-2 bg-indigo-400 rounded-full"></div>
+                            </div>
+                            <div class="flex items-center space-x-8">
+                                <button id="muteBtn" class="hidden w-14 h-14 rounded-full bg-gray-700 hover:bg-gray-600 flex items-center justify-center transition">
+                                    <i class="fas fa-microphone text-white text-xl"></i>
+                                </button>
+                                <button id="callBtn" class="w-14 h-14 rounded-full bg-green-600 hover:bg-green-500 flex items-center justify-center transition">
+                                    <i class="fas fa-phone text-white text-xl"></i>
+                                </button>
+                                <button id="hangupBtn" class="hidden w-14 h-14 rounded-full bg-red-600 hover:bg-red-500 flex items-center justify-center transition">
+                                    <i class="fas fa-phone-slash text-white text-xl"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Chat Panel -->
+            <div id="chat-panel" class="w-full md:w-1/3 flex-col bg-gray-800/50 flex order-2 md:order-1" style="display: flex; flex-direction: column; justify-content: space-between;">
+                <div id="chat-history" class="flex-1 p-4 overflow-y-auto"></div>
+                <div id="ai-loading-indicator" class="p-4 flex items-center gap-2">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <span data-lang-key="ai_thinking">AI está pensando...</span>
+                </div>
+                <div id="chat-input-container" class="p-4 border-t border-gray-700">
+                    <div class="relative flex items-center" id="input-row">
+                        <input type="text" id="message-input" placeholder="Escribe tu mensaje..." data-lang-key="chat_input_placeholder" class="form-input w-full pr-24 py-3 rounded-lg text-white placeholder-gray-400">
+                        <div class="absolute right-3 flex items-center space-x-4">
+                            <button id="chat-call-btn" class="text-gray-400 hover:text-white">
+                                <i class="fas fa-camera text-xl"></i>
+                            </button>
+                            <button id="send-button" class="text-gray-400 hover:text-white">
+                                <i class="fas fa-paper-plane text-xl"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% else %}
+            <div class="flex-1 flex items-center justify-center text-center">
+                <div>
+                    <h2 class="text-2xl font-bold mb-4" data-lang-key="welcome_heading">Welcome to AI Web Builder</h2>
+                    <p class="text-gray-400" data-lang-key="welcome_subtext">Select a chat from your history or create a new one to get started.</p>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Fullscreen Preview Container -->
+    <div id="fullscreen-preview" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: white; z-index: 9999;">
+        <button id="close-preview-btn" style="position: absolute; top: 20px; right: 20px; background: #333; color: #fff; border: none; border-radius: 50%; width: 40px; height: 40px; font-size: 24px; cursor: pointer; z-index: 10000;">&times;</button>
+        <iframe id="fullscreen-iframe" style="width: 100%; height: 100%; border: none;"></iframe>
+    </div>
+
+    <script>
+        const HASHCHAT = "{{ hashchat or '' }}";
+        const USERNAME = "{{ username }}";
+        const RECHARGE_URL = "{{ getenv('RECHARGE_URL') }}";
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const newChatBtn = document.getElementById('new-chat-btn');
+            if(newChatBtn) {
+                newChatBtn.addEventListener('click', function() {
+                    fetch('/new_chat', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' }
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            window.location.href = '/chat/' + data.hashchat;
+                        } else {
+                            console.error('Failed to create new chat:', data.error);
+                        }
+                    })
+                    .catch(error => console.error('Error creating new chat:', error));
+                });
+            }
+            if (HASHCHAT) {
+                const chatPanel = document.getElementById('chat-panel');
+                if(chatPanel) { chatPanel.style.display = 'flex'; }
+            }
+        });
+    </script>
+    <script src="{{ url_for('static', filename='js/i18n.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/chatweb.js') }}"></script>
+</body>
+</html>

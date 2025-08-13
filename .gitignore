@@ -1,0 +1,6 @@
+venv
+.env
+__pycache__/
+*.pyc
+static/temp_media/*
+flask_session/*

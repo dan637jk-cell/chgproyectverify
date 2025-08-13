@@ -1,0 +1,117 @@
+[
+  {
+    "name": "CreateNewDocument",
+    "description": "Creates a new HTML document from scratch based on user specifications. Use this when the user wants to start a new web page.",
+    "strict": true,
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "description": "The title for the new HTML document."
+        },
+        "context_instruction": {
+          "type": "string",
+          "description": "Specific instructions from the user about the document's structure, style, or content."
+        },
+        "content": {
+          "type": "string",
+          "description": "The main text content for the document body."
+        },
+        "images_insert_html": {
+          "type": "string",
+          "description": "URLs or placeholders for images to include in the document. Can be an empty string if no images are requested."
+        }
+      },
+      "required": [
+        "title",
+        "context_instruction",
+        "content"
+      ],
+      "additionalProperties": false
+    }
+  },
+  {
+    "name": "edit_current_document",
+    "description": "Usa esta función siempre que el usuario solicite agregar, editar o modificar cualquier elemento en un código, una página web o un documento. La función debe realizar las ediciones por sí misma y devolver el código HTML completo y actualizado, sin omitir ni una sola línea. El código devuelto debe comenzar con `<html>` y terminar con `</html>`, y debe proporcionarse dentro de un bloque de código.",
+    "strict": true,
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "new_code_html_modified": {
+          "type": "string",
+          "description": "El código HTML completo y actualizado —incluyendo todas las modificaciones solicitadas— comenzando con `<html>` y terminando con `</html>`."
+        }
+      },
+      "required": [
+        "new_code_html_modified"
+      ],
+      "additionalProperties": false
+    }
+  },
+  {
+    "name": "generate_music",
+    "description": "Generates a short audio clip from a text prompt. Use this when the user asks to create a song or audio.",
+    "strict": true,
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "prompt": {
+          "type": "string",
+          "description": "A text description of the audio to be generated."
+        }
+      },
+      "required": [
+        "prompt"
+      ],
+      "additionalProperties": false
+    }
+  },
+  {
+    "name": "recall_html",
+    "description": "Retrieves and displays the current HTML code of the document being edited. Use this to review the code before making changes.",
+    "strict": true,
+    "parameters": {
+      "type": "object",
+      "properties": {},
+      "required": [],
+      "additionalProperties": false
+    }
+  },
+  {
+    "name": "search_images",
+    "description": "This function is used to search for images that will be included on the web page. Always run this function before executing CreateNewDocument. It searches images on Pixabay, so use simple two‑word, general terms (e.g., 'happy dog', 'person eating') that a search engine like Pixabay can understand.",
+    "strict": true,
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "query": {
+          "type": "string",
+          "description": "Two‑word, simple and general search terms to find relevant images on Pixabay (e.g., 'happy dog', 'person eating')."
+        },
+        "per_page": {
+          "type": "integer",
+          "description": "Number of results per page (1–200).",
+          "default": 10,
+          "minimum": 1,
+          "maximum": 200
+        },
+        "page": {
+          "type": "integer",
+          "description": "Page number for pagination.",
+          "default": 1,
+          "minimum": 1
+        },
+        "safesearch": {
+          "type": "boolean",
+          "description": "Enable safe search filtering.",
+          "default": true
+        }
+      },
+      "required": [
+        "query"
+      ],
+      "additionalProperties": false
+    }
+  }
+]

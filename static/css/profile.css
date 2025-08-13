@@ -1,0 +1,234 @@
+body, html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  background-color: #ffffff; /* Fondo blanco */
+  color: black; /* Texto negro */
+}
+
+.container {
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+  background-color: #ffffff; /* Fondo blanco */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6); /* Sombra ajustada */
+  border-radius: 15px; 
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.header_txt_area {
+  text-align: center;
+  background-color: #ffffff; /* Fondo blanco */
+  color: #00FFBF;
+  padding: 15px;
+  font-size: 24px;
+  font-weight: bold;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.deposit_area, .withdraw_area {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  display: none;
+}
+
+.input-group {
+  margin: 15px 0;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.input-group input, .input-group select {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco */
+  color: black; /* Texto negro */
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.button-group {
+  text-align: center;
+  margin-top: 20px;
+  position: relative; /* To position dropdown */
+}
+
+.button-group button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  margin: 5px;
+  cursor: pointer;
+  color: white;
+  background-color: #ff0000; /* Buttons in red */
+  transition: background-color 0.3s ease;
+}
+
+.button-group button:hover {
+  background-color: #cc0000; /* Darker red on hover */
+}
+
+.dropdown-menu {
+  display: none; /* Initially hidden */
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #ffffff; /* Fondo blanco */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+  border-radius: 5px;
+  overflow: hidden;
+  margin-top: 5px;
+  z-index: 1000;
+}
+
+.dropdown-menu button {
+  background-color: transparent;
+  border: none;
+  padding: 10px 20px;
+  text-align: left;
+  width: 100%;
+  color: black; /* Texto negro */
+}
+
+.dropdown-menu button:hover {
+  background-color: #cc0000; /* Darker red on hover */
+  color: white;
+}
+
+.show {
+  display: block;
+}
+
+.balance-pools {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  gap: 20px;
+}
+
+.cylinder-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cylinder {
+  position: relative;
+  width: 130px;  /* Originalmente 200px, reducido en un 30% */
+  height: 180px; /* Originalmente 400px, reducido en un 30% */
+  border: 2px solid #000; /* Cambio a borde negro */
+  border-radius: 100px / 50px;
+  overflow: hidden;
+  background: transparent;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5); /* Ajuste sombra */
+}
+
+.liquid {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 100px / 50px;
+  overflow: hidden;
+}
+
+.pool-label {
+  margin-bottom: 10px;
+  font-size: 18px;
+  color: black; /* Texto negro */
+  font-weight: bold;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+@media screen and (max-width: 767px) {
+  .container {
+    width: 100%;
+    box-shadow: none;
+    border-radius: 0;
+  }
+}
+
+/* New CSS for Pools */
+.pools_balance {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.pool_container {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin: 10px 0;
+}
+
+.pool {
+  flex: 1;
+  position: relative;
+  margin: 0 10px;
+}
+
+.pool .pool_label {
+  text-align: center;
+  margin-bottom: 5px;
+  color: black; /* Texto negro */
+}
+
+.pool .liquid {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: red;
+  animation: liquidMove 5s linear infinite;
+}
+
+.pool .liquid.pambi {
+  background: yellow;
+}
+
+@keyframes liquidMove {
+  0% { background-position: 0 0; }
+  100% { background-position: 100% 100%; }
+}
+
+@media (min-width: 768px) {
+  .form_container {
+    display: flex;
+  }
+
+  .pools_balance {
+    flex: 1;
+    margin-top: 50px;
+  }
+
+  .form_area {
+    flex: 2;
+  }
+}
+
+@media (max-width: 767px) {
+  .form_container {
+    display: block;
+  }
+
+  .pools_balance {
+    margin-top: 20px;
+  }
+
+  .pool_container {
+    margin: 10px 0;
+  }
+}

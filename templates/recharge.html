@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Recharge Balance</title>
+  <link rel="stylesheet" href="/static/css/main.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <a href="/">Home</a>
+    <a href="/chat">Dashboard</a>
+    <a href="/recharge" class="active">Recharge</a>
+  </nav>
+  <main class="container">
+    <h1>Recharge Balance</h1>
+    <p>Connect your Phantom wallet and deposit the SPL token to add USD credit to your account.</p>
+    <section id="wallet-section">
+      <button id="connectWalletBtn">Connect Phantom</button>
+      <div id="walletAddress" class="mono small"></div>
+      <div id="signupRequirement" class="info"></div>
+    </section>
+    <section id="deposit-section" style="display:none;">
+      <h2>Make a Deposit</h2>
+      <p>Minimum deposit: <span id="minDepositUsd">$1</span> (≈ <span id="minDepositTokens">-</span> tokens)</p>
+  <p>Mint: <code id="mintAddress">-</code><br> Treasury: <code id="treasuryAddress">-</code></p>
+      <label>Amount (tokens): <input type="number" id="amountTokens" min="0" step="0.0001" /></label>
+  <div>Estimated USD: <span id="estimatedUsd">0.00</span></div>
+  <label>Transaction Signature:<input type="text" id="txSignature" placeholder="Paste signature after sending" /></label>
+  <small>Send tokens from your wallet to the treasury above using Phantom, then paste the resulting transaction signature.</small>
+      <button id="sendDepositBtn">Send Deposit</button>
+      <div id="depositStatus" class="status"></div>
+  <hr>
+  <h3>Your Balance</h3>
+  <div id="currentBalance">-</div>
+    </section>
+  </main>
+  <script src="/static/js/phantom.js"></script>
+</body>
+</html>

@@ -1,0 +1,104 @@
+{
+  "lang_switcher": "Language",
+  "english": "English",
+  "spanish": "Spanish",
+  "chinese": "Chinese",
+
+  "app_title": "AI Web Builder",
+
+  "login_nav": "Log In",
+  "signup_nav": "Sign Up",
+
+  "login_title": "Login - AI Web Builder",
+  "login_heading": "Login",
+  "username_label": "Username",
+  "username_placeholder": "Your username",
+  "password_label": "Password",
+  "password_placeholder": "Your password",
+  "login_button": "Enter",
+  "signup_link": "Don't have an account?",
+  "signup_here": "Register here",
+
+  "signup_title": "Register - AI Web Builder",
+  "signup_heading": "Create Account",
+  "signup_button": "Register",
+  "login_link": "Already have an account?",
+  "login_here": "Login here",
+
+  "signup_success_title": "Registration Successful!",
+  "signup_success_text": "You will be redirected to the login page.",
+
+  "chat_title": "AI Web Builder",
+  "chat_greeting": "Hello",
+  "publish_button": "Publish Page",
+  "logout_button": "Logout",
+  "chat_input_placeholder": "Type your message...",
+  "ai_thinking": "AI is thinking...",
+  "chat_mode_button": "Chat Mode",
+  "call_mode_button": "Call Mode",
+
+  "chat_history_link": "Chat History",
+  "history_header": "History",
+  "chats_header": "Chats",
+  "websites_header": "Websites",
+  "new_chat": "New Chat",
+  "delete_all_chats": "Delete all chats",
+  "show_preview": "Show preview",
+  "welcome_heading": "Welcome to AI Web Builder",
+  "welcome_subtext": "Select a chat from your history or create a new one to get started.",
+  "balance_label": "Balance:",
+
+  "republish": "Republish",
+  "edit": "Edit",
+  "delete": "Delete",
+
+  "confirm_title": "Are you sure?",
+  "confirm_text_irreversible": "You won't be able to revert this!",
+  "confirm_yes_delete": "Yes, delete it!",
+  "deleted_title": "Deleted!",
+  "chat_deleted": "Your chat has been deleted.",
+  "website_deleted": "Your website has been deleted.",
+  "error_title": "Error",
+  "could_not_load_for_editing": "Could not load the website content for editing.",
+
+  "delete_all_text": "You are about to delete all your chat history. This action cannot be undone.",
+  "yes_delete_all": "Yes, delete all!",
+  "all_chats_deleted": "All your chats have been deleted.",
+
+  "enter_website_name_title": "Enter a name for your website",
+  "input_label_website_name": "Website Name",
+  "input_placeholder_website_name": "My Awesome Site",
+  "input_validation_required": "You need to write something!",
+
+  "site_published_title": "Site Published!",
+  "site_republished_title": "Site Republished!",
+  "site_available_text": "Your website is available at:",
+  "copy_link": "Copy Link",
+  "close": "Close",
+  "link_copied_title": "Link Copied!",
+
+  "images_only": "Only images are allowed",
+  "upload_failed": "Upload failed",
+  "network_error": "A network error occurred. Please try again.",
+
+  "could_not_publish": "Could not publish the site:",
+  "recharge_balance": "Recharge Balance",
+  "connection_error": "Connection error.",
+
+  "chat_history_title": "Chat History - AI Web Builder",
+  "back_to_chat_button": "Back to Chat",
+
+  "profile_title": "Profile - AI Web Builder",
+  "your_profile": "Your Profile",
+  "avatar_alt": "Avatar",
+  "phone_number_label": "Phone Number",
+  "your_credits": "Your Credits",
+  "recharge_credits": "Recharge Credits",
+  "update_profile": "Update Profile",
+  "view_my_websites": "View My Websites",
+
+  "my_websites_title": "My Websites - AI Web Builder",
+  "my_websites_heading": "My Websites",
+  "created_on": "Created on",
+  "no_websites_yet": "You haven't created any websites yet."
+}

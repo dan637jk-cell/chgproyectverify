@@ -1,0 +1,367 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  background-color: rgba(0, 0, 0, 0.05); /* Fondo blanco */
+  color: black; /* Texto en negro */
+}
+
+a {
+  font-size: 18px;
+  color: #007BFF; /* Color de enlace */
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.content_balance {
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6); /* Sombra ajustada */
+}
+
+.chat-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(to right, #ff0000, gray); /* Fondo del encabezado en degradado rojo y gris */
+  color: black; /* Color de texto en negro */
+  padding: 20px;
+  border-radius: 10px 10px 0 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+}
+
+.img_return {
+  max-width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+}
+
+.recordButton {
+  background: linear-gradient(to bottom, #ff0000, #cc0000);
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.6);
+  color: black; /* Texto en negro */
+  font-size: 1.2em;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.recordButton:hover {
+  background-color: white;
+  color: black; /* Hover con letras negras */
+}
+
+#recordButton:active {
+  background: linear-gradient(to bottom, #dc3545, #c82333);
+}
+
+#recordButton.recording {
+  background: red;
+  color: black; /* Texto en negro mientras se graba */
+}
+
+.chat-submit2 {
+  border: 2px solid white;
+  background: rgba(255, 255, 255, 0.8); /* Fondo blanco */
+  color: black; /* Texto negro */
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.chat-submit2:hover {
+  background: white;
+  color: black;
+}
+
+#myButton {
+  font-family: Arial, sans-serif;
+  border: none;
+  color: black; /* Texto en negro */
+  background-color: #ff0000;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 12px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+#myButton:hover {
+  background-color: #cc0000;
+}
+
+.chat {
+  margin: 0 auto;
+  padding: 20px;
+  box-sizing: border-box;
+  max-width: 800px;
+  width: 100%;
+  background-color: #ffffff; /* Fondo blanco */
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+}
+
+.item {
+  width: 100%;
+  padding: 15px;
+  margin: 10px 0;
+  display: block;
+  align-items: center;
+  border: 1px solid #333;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+  box-sizing: border-box;
+  background-color: #f0f0f0; /* Fondo gris claro */
+  position: relative;
+}
+
+.item h2 {
+  font-size: 1.5rem;
+  margin: 0 0 10px;
+  font-weight: bold;
+  color: black; /* Texto negro */
+  position: relative;
+}
+
+.item h2::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-image: linear-gradient(to right, #ff0000, gray);
+}
+
+.item:hover h2::after {
+  background-image: linear-gradient(to right, #ffffff, #ffffff);
+}
+
+.container, .chat2 {
+  padding-top: 150px;
+}
+
+.chat-messages {
+  height: 400px;
+  overflow-y: auto;
+  display: block;
+  margin-top: 20px;
+  background-color: #ffffff; /* Fondo blanco */
+}
+
+.container_text_area {
+  display: flex;
+  flex-direction: column;
+  font-family: Arial, Helvetica, sans-serif;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.chat-message {
+  display: block;
+  margin-bottom: 10px;
+  max-width: 80%;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 16px;
+  background-color: #f0f0f0; /* Fondo gris claro */
+  color: black; /* Texto negro */
+}
+
+.chat-message.user {
+  align-self: flex-end;
+  background-color: #f0f0f0; /* Fondo gris claro */
+  color: black; /* Texto negro en mensajes de usuario */
+}
+
+.chat-message.server {
+  align-self: flex-start;
+  background: linear-gradient(to right, #ff0000, gray);
+  color: black; /* Texto negro en mensajes del servidor */
+}
+
+.chat-message-box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.chat-input {
+  flex-grow: 1;
+  margin-right: 10px;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 16px;
+  background-color: #ffffff; /* Fondo blanco */
+  color: black; /* Texto negro */
+}
+
+.chat-send-button {
+  background: linear-gradient(to right, #ff0000, gray);
+  color: black; /* Texto negro en el botón de envío */
+  border: none;
+  border-radius: 5px;
+  padding: 8px 15px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.chat-form {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.chat-form input[type="text"] {
+  width: 60%;
+  background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco */
+  color: black; /* Texto negro */
+  border-radius: 5px;
+  padding: 10px;
+  border: none;
+}
+
+.message-popup {
+  display: none;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #ff0000, gray);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #333;
+  border-radius: 10px;
+}
+
+@media (max-width: 600px) {
+  .gallery .item {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .chat {
+    width: 100%;
+    height: 100%;
+  }
+
+  .chat-header {
+    padding: 10px;
+    border-radius: 0 0 5px 5px;
+  }
+
+  .chat-messages {
+    height: 50vh;
+  }
+
+  .chat-message {
+    max-width: 90%;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 16px;
+  }
+
+  .chat-input {
+    width: 70%;
+    border-radius: 5px;
+    padding: 10px;
+    border: none;
+    background-color: #ffffff; /* Fondo blanco */
+    color: black; /* Texto negro */
+  }
+
+  .chat-send-button {
+    background: linear-gradient(to right, #ff0000, gray);
+    color: black; /* Texto negro en el botón de envío */
+    border: none;
+    border-radius: 5px;
+    padding: 8px 15px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+}
+
+#show-preview-btn, #hide-preview-btn {
+    display: none; /* Ocultos por defecto */
+}
+
+/* Estilos para el pie de página en modo móvil */
+@media (max-width: 767px) {
+    #chat-panel {
+        position: relative;
+        padding-bottom: 80px; /* Espacio para el pie de página */
+    }
+
+    #chat-input-container {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: #1f2937; /* Color de fondo del pie de página */
+        padding: 1rem;
+        z-index: 10;
+    }
+
+    #call-footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 1rem;
+        background-color: #1f2937;
+        z-index: 10;
+    }
+}
+
+/* Estilos para modo móvil */
+@media (max-width: 767px) {
+    body.mobile-chat-mode #preview-panel {
+        display: none;
+    }
+
+    body.mobile-chat-mode.preview-visible #chat-panel {
+        display: none;
+    }
+
+    body.mobile-chat-mode.preview-visible #preview-panel {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 100;
+        background-color: white; /* Fondo blanco sólido */
+    }
+
+    body.mobile-chat-mode #show-preview-btn {
+        display: block;
+    }
+
+    body.mobile-chat-mode.preview-visible #hide-preview-btn {
+        display: block;
+    }
+}
+

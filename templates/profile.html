@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-lang-key="profile_title">Profile - AI Web Builder</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/profile.css') }}">
+</head>
+<body>
+    <div class="absolute top-4 right-4">
+        <select id="lang-switcher" class="bg-black/30 hover:bg-black/40 px-4 py-2 font-medium transition rounded-full appearance-none text-white">
+            <option value="en" data-lang-key="english">English</option>
+            <option value="es" data-lang-key="spanish">Español</option>
+            <option value="zh" data-lang-key="chinese">中文</option>
+        </select>
+    </div>
+    <div class="profile-container">
+        <h2 data-lang-key="your_profile">Your Profile</h2>
+        <form action="{{ url_for('profile') }}" method="post" enctype="multipart/form-data">
+            <div class="avatar-section">
+                <img src="{{ profile.avatar_url or url_for('static', filename='images/default-avatar.png') }}" alt="Avatar" class="avatar-preview" data-lang-key="avatar_alt">
+                <input type="file" name="avatar" accept="image/*">
+            </div>
+            <div class="input-group">
+                <label for="username" data-lang-key="username_label">Username</label>
+                <input type="text" id="username" name="username" value="{{ profile.username or '' }}" required placeholder=""/>
+            </div>
+            <div class="input-group">
+                <label for="phone_number" data-lang-key="phone_number_label">Phone Number</label>
+                <input type="text" id="phone_number" name="phone_number" value="{{ profile.phone_number or '' }}" disabled>
+            </div>
+            <div class="credits-section">
+                <h3 data-lang-key="your_credits">Your Credits</h3>
+                <p><span data-lang-key="balance_label">Balance:</span> {{ credits.balance or '0.00' }}</p>
+                <a href="{{ url_for('recharge') }}" class="button" data-lang-key="recharge_credits">Recharge Credits</a>
+            </div>
+            <button type="submit" data-lang-key="update_profile">Update Profile</button>
+        </form>
+        <a href="{{ url_for('chat') }}" data-lang-key="back_to_chat_button">Back to Chat</a>
+        <a href="{{ url_for('web_history') }}" data-lang-key="view_my_websites">View My Websites</a>
+    </div>
+    <script src="{{ url_for('static', filename='js/i18n.js') }}"></script>
+</body>
+</html>

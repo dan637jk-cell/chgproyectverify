@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-lang-key="login_title">Iniciar Sesión - AI Web Builder</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <style>
+        body { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); }
+    </style>
+</head>
+<body class="h-screen flex flex-col text-white">
+
+    <!-- Header -->
+    <header class="gradient-bg p-4 shadow-lg z-20">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-xl font-bold" data-lang-key="app_title">AI Web Builder</h1>
+            <nav class="hidden md:flex items-center gap-4">
+                <a href="{{ url_for('login') }}" class="font-medium"><span data-lang-key="login_nav">Log In</span></a>
+                <a href="{{ url_for('signup') }}" class="font-medium"><span data-lang-key="signup_nav">Sign Up</span></a>
+                <a href="{{ url_for('recharge_page') }}" class="font-medium"><span data-lang-key="recharge_nav">Recharge</span></a>
+                <select id="lang-switcher" class="bg-black/30 hover:bg-black/40 px-4 py-2 font-medium transition rounded-full appearance-none text-white">
+                    <option value="en" data-lang-key="english">English</option>
+                    <option value="es" data-lang-key="spanish">Español</option>
+                    <option value="zh" data-lang-key="chinese">中文</option>
+                </select>
+            </nav>
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-white focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden mt-4">
+            <a href="{{ url_for('login') }}" class="block text-center py-2"><span data-lang-key="login_nav">Log In</span></a>
+            <a href="{{ url_for('signup') }}" class="block text-center py-2"><span data-lang-key="signup_nav">Sign Up</span></a>
+            <a href="{{ url_for('recharge_page') }}" class="block text-center py-2"><span data-lang-key="recharge_nav">Recharge</span></a>
+            <div class="relative py-2 px-4">
+                <select id="lang-switcher-mobile" class="bg-black/30 hover:bg-black/40 px-4 py-2 font-medium transition rounded-full appearance-none w-full text-white">
+                    <option value="en" data-lang-key="english">English</option>
+                    <option value="es" data-lang-key="spanish">Español</option>
+                    <option value="zh" data-lang-key="chinese">中文</option>
+                </select>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-1 flex items-center justify-center">
+        <div class="form-container p-8 rounded-2xl shadow-2xl w-full max-w-md">
+            <h1 class="text-3xl font-bold text-center mb-6" data-lang-key="login_heading">Iniciar Sesión</h1>
+            
+            <form id="login-form" class="space-y-6">
+                <div>
+                    <label for="username" class="block text-sm font-medium mb-2" data-lang-key="username_label">Nombre de Usuario</label>
+                    <input type="text" id="username" name="username" placeholder="Tu nombre de usuario"
+                           data-lang-key="username_placeholder"
+                           class="form-input w-full px-4 py-3 rounded-lg text-white placeholder-gray-500 focus:outline-none">
+                </div>
+                <div>
+                    <label for="password" class="block text-sm font-medium mb-2" data-lang-key="password_label">Contraseña</label>
+                    <input type="password" id="password" name="password" placeholder="Tu contraseña"
+                           data-lang-key="password_placeholder"
+                           class="form-input w-full px-4 py-3 rounded-lg text-white placeholder-gray-500 focus:outline-none">
+                </div>
+    
+                <button type="submit" class="btn-primary w-full py-3 rounded-lg font-semibold text-lg">
+                    <i class="fas fa-sign-in-alt mr-2"></i><span data-lang-key="login_button">Enter</span>
+                </button>
+            </form>
+    
+            <p id="error-message" class="text-red-400 text-center mt-4"></p>
+    
+            <div class="text-center mt-6">
+                <p><span data-lang-key="signup_link">¿No tienes una cuenta?</span> <a href="{{ url_for('signup') }}" class="link font-semibold" data-lang-key="signup_here">Regístrate aquí</a></p>
+            </div>
+            <div class="text-center mt-2">
+                <p><a href="{{ url_for('recharge_page') }}" class="link font-semibold" data-lang-key="recharge_here">Recargar saldo</a></p>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            var menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+    </script>
+    <script src="{{ url_for('static', filename='js/i18n.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/login.js') }}"></script>
+</body>
+</html>

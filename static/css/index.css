@@ -1,0 +1,73 @@
+body {
+  padding-top: 70px; /* Añadir espacio para el header fijo */
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.navbar {
+  font-size: 20px;
+  color: black;
+  background: linear-gradient(to right, #ff0000, gray); /* Fondo del encabezado en degradado rojo y gris */
+  display: flex;
+}
+
+.fixed-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #f0f0f0; /* Fondo gris claro */
+  color: black; /* Texto negro */
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 1.5);
+  transition: all 0.3s ease;
+}
+.collapse{
+  margin-left: 600px;
+}
+.fixed-header .navbar-toggler {
+  border: none;
+  background: none;
+
+}
+.navbar-toggler{
+  display: flex;
+}
+.fixed-header .navbar-toggler-icon {
+  color: black; /* Icono en negro */
+}
+
+.fixed-header .navbar-nav .nav-link {
+  color: black; /* Enlaces en negro */
+}
+
+.navbar-collapse.collapse.show {
+  display: block !important; /* Para asegurarnos de que Bootstrap no sobreescribe el estilo */
+}
+
+@media (max-width: 767.98px) {
+  .collapse{
+    margin-left: 0px;
+  }
+  .navbar-collapse {
+    display: none;
+  }
+
+  .navbar-collapse.show {
+    display: block !important;
+  }
+
+  .navbar-toggler-icon {
+    display: inline-block;
+  }
+
+  .navbar-toggler {
+    color: black; /* Texto negro */
+  }
+
+  .navbar-toggler.opened .navbar-toggler-icon {
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30"><path stroke="rgba(0, 0, 0, 1)" stroke-width="2" d="M6 16 L11 11 M11 11 L16 6 M16 6 L21 11 M21 11 L26 16 M26 16 L21 21 M21 21 L16 26 M16 26 L11 21 M11 21 L6 16"/></svg>');
+  }
+
+  .navbar-toggler.closed .navbar-toggler-icon {
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30"><path stroke="rgba(0, 0, 0, 1)" stroke-width="2" d="M4 7 h22 M4 15 h22 M4 23 h22"/></svg>');
+  }
+}

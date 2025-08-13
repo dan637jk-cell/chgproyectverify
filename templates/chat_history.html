@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-lang-key="chat_history_title">Historial de Chats - {{ username }}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body class="h-screen flex flex-col text-white bg-gray-900 overflow-hidden">
+
+    <!-- Header -->
+    <header class="gradient-bg p-4 shadow-lg z-20">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-xl font-bold" data-lang-key="chat_history_title">Historial de Chats</h1>
+            <a href="{{ url_for('chat') }}" class="bg-blue-600 hover:bg-blue-700 px-4 py-2 font-medium flex items-center gap-2 transition rounded-full">
+                <i class="fas fa-arrow-left text-sm"></i>
+                <span data-lang-key="back_to_chat_button">Volver al Chat</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div id="main-content" class="flex-1 flex flex-col overflow-hidden">
+        <!-- History Panel -->
+        <div id="history-panel" class="w-full bg-gray-800 p-4">
+            <div id="history-content" class="overflow-y-auto">
+                <!-- Items here -->
+            </div>
+            <div class="mt-4">
+                <button id="delete-all-chats-btn" class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded flex items-center justify-center">
+                    <i class="fas fa-trash-alt mr-2"></i>
+                    <span data-lang-key="delete_all_chats">Borrar todos los chats</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="absolute top-4 right-4">
+        <select id="lang-switcher" class="bg-black/30 hover:bg-black/40 px-4 py-2 font-medium transition rounded-full appearance-none text-white">
+            <option value="en" data-lang-key="english">English</option>
+            <option value="es" data-lang-key="spanish">Español</option>
+            <option value="zh" data-lang-key="chinese">中文</option>
+        </select>
+    </div>
+
+    <script>
+        const USERNAME = "{{ username }}";
+    </script>
+    <script src="{{ url_for('static', filename='js/i18n.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/chatweb.js') }}"></script>
+</body>
+</html>

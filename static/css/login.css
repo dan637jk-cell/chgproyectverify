@@ -1,0 +1,114 @@
+body {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  background-color: #f0f2f5;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  flex-direction: column; /* Agregado para poder usar el espaciado con justify-content */
+}
+
+.chat-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background: linear-gradient(to right, #007BFF, #6610f2);
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  top: 0;
+  left: 0;
+}
+
+.container-login {
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+  border-radius: 10px;
+  
+}
+
+.sesion_login {
+  margin-top: 50px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  border-radius: 5px;
+
+}
+
+.registerTitle {
+  text-align: center;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 2rem;
+  color: #007BFF;
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #333;
+}
+input[type="text"],
+input[type="password"],
+select {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border: none;
+  border-bottom: 2px solid #ccc;
+  box-sizing: border-box;
+  font-size: 16px;
+  transition: border-color 0.3s ease-in-out;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+select:focus {
+  border-bottom: 2px solid #007BFF;
+  outline: none;
+}
+
+button.btn-primary {
+  width: 100%;
+  padding: 12px 20px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #007BFF;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+button.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+.content_balance{
+  background-color: rgba(0, 0, 0, 0.1);
+  box-shadow: #333 4px 0px 5px;
+  color:#007BFF;
+}
+@media (max-width: 600px) {
+  .container-login {
+    padding: 15px;
+  }
+
+  .registerTitle {
+    font-size: 1.5rem;
+  }
+
+  input[type="text"],
+  input[type="password"],
+  select,
+  button.btn-primary {
+    font-size: 14px;
+    padding: 10px;
+  }
+}

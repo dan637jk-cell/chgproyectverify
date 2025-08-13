@@ -1,0 +1,104 @@
+{
+  "lang_switcher": "Idioma",
+  "english": "Inglés",
+  "spanish": "Español",
+  "chinese": "Chino",
+
+  "app_title": "AI Web Builder",
+
+  "login_nav": "Iniciar Sesión",
+  "signup_nav": "Registrarse",
+
+  "login_title": "Iniciar Sesión - AI Web Builder",
+  "login_heading": "Iniciar Sesión",
+  "username_label": "Nombre de Usuario",
+  "username_placeholder": "Tu nombre de usuario",
+  "password_label": "Contraseña",
+  "password_placeholder": "Tu contraseña",
+  "login_button": "Entrar",
+  "signup_link": "¿No tienes una cuenta?",
+  "signup_here": "Regístrate aquí",
+
+  "signup_title": "Registro - AI Web Builder",
+  "signup_heading": "Crear Cuenta",
+  "signup_button": "Registrarse",
+  "login_link": "¿Ya tienes una cuenta?",
+  "login_here": "Inicia sesión aquí",
+
+  "signup_success_title": "¡Registro Exitoso!",
+  "signup_success_text": "Serás redirigido a la página de inicio de sesión.",
+
+  "chat_title": "AI Web Builder",
+  "chat_greeting": "Hola",
+  "publish_button": "Publicar Página",
+  "logout_button": "Salir",
+  "chat_input_placeholder": "Escribe tu mensaje...",
+  "ai_thinking": "La IA está pensando...",
+  "chat_mode_button": "Modo Chat",
+  "call_mode_button": "Modo Llamada",
+
+  "chat_history_link": "Historial de Chats",
+  "history_header": "Historial",
+  "chats_header": "Chats",
+  "websites_header": "Sitios Web",
+  "new_chat": "Nuevo Chat",
+  "delete_all_chats": "Borrar todos los chats",
+  "show_preview": "Ver previsualización",
+  "welcome_heading": "Bienvenido a AI Web Builder",
+  "welcome_subtext": "Selecciona un chat de tu historial o crea uno nuevo para comenzar.",
+  "balance_label": "Saldo:",
+
+  "republish": "Republicar",
+  "edit": "Editar",
+  "delete": "Eliminar",
+
+  "confirm_title": "¿Estás seguro?",
+  "confirm_text_irreversible": "¡No podrás revertir esto!",
+  "confirm_yes_delete": "Sí, eliminar",
+  "deleted_title": "¡Eliminado!",
+  "chat_deleted": "Tu chat ha sido eliminado.",
+  "website_deleted": "Tu sitio web ha sido eliminado.",
+  "error_title": "Error",
+  "could_not_load_for_editing": "No se pudo cargar el contenido del sitio para edición.",
+
+  "delete_all_text": "Vas a eliminar todo tu historial de chats. Esta acción no se puede deshacer.",
+  "yes_delete_all": "Sí, borrar todo",
+  "all_chats_deleted": "Todos tus chats han sido eliminados.",
+
+  "enter_website_name_title": "Ingresa un nombre para tu sitio web",
+  "input_label_website_name": "Nombre del Sitio",
+  "input_placeholder_website_name": "Mi Sitio Asombroso",
+  "input_validation_required": "¡Debes escribir algo!",
+
+  "site_published_title": "¡Sitio Publicado!",
+  "site_republished_title": "¡Sitio Republicado!",
+  "site_available_text": "Tu sitio web está disponible en:",
+  "copy_link": "Copiar Enlace",
+  "close": "Cerrar",
+  "link_copied_title": "¡Enlace Copiado!",
+
+  "images_only": "Solo se permiten imágenes",
+  "upload_failed": "La carga falló",
+  "network_error": "Ocurrió un error de red. Inténtalo de nuevo.",
+
+  "could_not_publish": "No se pudo publicar el sitio:",
+  "recharge_balance": "Recargar Saldo",
+  "connection_error": "Error de conexión.",
+
+  "chat_history_title": "Historial de Chats - AI Web Builder",
+  "back_to_chat_button": "Volver al Chat",
+
+  "profile_title": "Perfil - AI Web Builder",
+  "your_profile": "Tu Perfil",
+  "avatar_alt": "Avatar",
+  "phone_number_label": "Número de Teléfono",
+  "your_credits": "Tus Créditos",
+  "recharge_credits": "Recargar Créditos",
+  "update_profile": "Actualizar Perfil",
+  "view_my_websites": "Ver Mis Sitios Web",
+
+  "my_websites_title": "Mis Sitios Web - AI Web Builder",
+  "my_websites_heading": "Mis Sitios Web",
+  "created_on": "Creado el",
+  "no_websites_yet": "Aún no has creado sitios web."
+}

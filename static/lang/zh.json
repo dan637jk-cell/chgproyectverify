@@ -1,0 +1,104 @@
+{
+  "lang_switcher": "语言",
+  "english": "英语",
+  "spanish": "西班牙语",
+  "chinese": "中文",
+
+  "app_title": "AI 网站构建器",
+
+  "login_nav": "登录",
+  "signup_nav": "注册",
+
+  "login_title": "登录 - AI 网站构建器",
+  "login_heading": "登录",
+  "username_label": "用户名",
+  "username_placeholder": "您的用户名",
+  "password_label": "密码",
+  "password_placeholder": "您的密码",
+  "login_button": "进入",
+  "signup_link": "还没有账户？",
+  "signup_here": "点击这里注册",
+
+  "signup_title": "注册 - AI 网站构建器",
+  "signup_heading": "创建账户",
+  "signup_button": "注册",
+  "login_link": "已经有账户？",
+  "login_here": "在这里登录",
+
+  "signup_success_title": "注册成功！",
+  "signup_success_text": "将跳转到登录页面。",
+
+  "chat_title": "AI 网站构建器",
+  "chat_greeting": "你好",
+  "publish_button": "发布页面",
+  "logout_button": "登出",
+  "chat_input_placeholder": "输入您的消息...",
+  "ai_thinking": "AI 正在思考...",
+  "chat_mode_button": "聊天模式",
+  "call_mode_button": "通话模式",
+
+  "chat_history_link": "聊天历史",
+  "history_header": "历史记录",
+  "chats_header": "聊天",
+  "websites_header": "网站",
+  "new_chat": "新聊天",
+  "delete_all_chats": "删除所有聊天",
+  "show_preview": "查看预览",
+  "welcome_heading": "欢迎使用 AI 网站构建器",
+  "welcome_subtext": "从历史记录中选择一个聊天或创建新聊天开始。",
+  "balance_label": "余额:",
+
+  "republish": "重新发布",
+  "edit": "编辑",
+  "delete": "删除",
+
+  "confirm_title": "确定吗？",
+  "confirm_text_irreversible": "该操作不可撤销！",
+  "confirm_yes_delete": "是的，删除！",
+  "deleted_title": "已删除！",
+  "chat_deleted": "您的聊天已删除。",
+  "website_deleted": "您的网站已删除。",
+  "error_title": "错误",
+  "could_not_load_for_editing": "无法加载网站内容用于编辑。",
+
+  "delete_all_text": "将要删除所有聊天历史。该操作无法撤销。",
+  "yes_delete_all": "是的，全部删除！",
+  "all_chats_deleted": "您的所有聊天已删除。",
+
+  "enter_website_name_title": "输入您的网站名称",
+  "input_label_website_name": "网站名称",
+  "input_placeholder_website_name": "我的超棒网站",
+  "input_validation_required": "请输入一些内容！",
+
+  "site_published_title": "网站已发布！",
+  "site_republished_title": "网站已重新发布！",
+  "site_available_text": "您的网站可访问：",
+  "copy_link": "复制链接",
+  "close": "关闭",
+  "link_copied_title": "链接已复制！",
+
+  "images_only": "只允许图片",
+  "upload_failed": "上传失败",
+  "network_error": "网络错误，请重试。",
+
+  "could_not_publish": "无法发布网站：",
+  "recharge_balance": "充值余额",
+  "connection_error": "连接错误。",
+
+  "chat_history_title": "聊天历史 - AI 网站构建器",
+  "back_to_chat_button": "返回聊天",
+
+  "profile_title": "个人资料 - AI 网站构建器",
+  "your_profile": "您的资料",
+  "avatar_alt": "头像",
+  "phone_number_label": "电话号码",
+  "your_credits": "您的积分",
+  "recharge_credits": "充值积分",
+  "update_profile": "更新资料",
+  "view_my_websites": "查看我的网站",
+
+  "my_websites_title": "我的网站 - AI 网站构建器",
+  "my_websites_heading": "我的网站",
+  "created_on": "创建于",
+  "no_websites_yet": "您还没有创建任何网站。"
+}

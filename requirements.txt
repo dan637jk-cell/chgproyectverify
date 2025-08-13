@@ -1,0 +1,15 @@
+openai
+requests
+flask
+tiktoken
+werkzeug
+markupsafe
+python-dotenv
+paypalhttp
+paypal-checkout-serversdk
+Flask-Session
+PyJWT
+mysql-connector-python
+beautifulsoup4
+solana
+solders
